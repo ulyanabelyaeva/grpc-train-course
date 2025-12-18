@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+//куда в папке target будут складываться сгенерированные классы
+option java_package = "org.belyaeva.proto";
+//название класса, сгенерированного по этому .proto
+option java_outer_classname = "CourseProto";
+
+service CourseService {
+  rpc getCursesByStudentId (StudentId) returns (Courses) {}
+}
+
+message StudentId {
+  string id = 1;
+}
+
+message Courses {
+  repeated Course courses = 1;
+}
+
+//числа после '=' для упорядочивания
+message Course {
+  int64 id = 1;
+  string name = 2;
+  int32 durationInHours = 3;
+  int32 yearOfEducation = 4;
+}

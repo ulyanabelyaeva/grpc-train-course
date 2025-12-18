@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "course.proto";
+
+option java_package = "org.belyaeva.proto";
+option java_outer_classname = "StudentProto";
+
+service StudentService {
+  rpc getStudent (StudentId) returns (Student) {}
+  rpc getStudentWithCourses (StudentId) returns (StudentWithCourses) {}
+}
+
+message Student {
+  int64 id = 1;
+  string name = 2;
+  string surname = 3;
+}
+
+message StudentWithCourses {
+  int64 id = 1;
+  string name = 2;
+  string surname = 3;
+  repeated Course courses = 4;
+}
