@@ -8,3 +8,6 @@ grpc:
     grpc-train-student:
       address: localhost:7070
       negotiation-type: plaintext #без шифрования
+logging:
+  level:
+    org.belyaeva: debug
