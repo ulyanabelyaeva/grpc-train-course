@@ -18,6 +18,9 @@ public class CourseService extends CourseServiceGrpc.CourseServiceImplBase {
     @Override
     public void getCursesByStudentId(CourseProto.StudentId request,
                                      StreamObserver<CourseProto.Courses> responseObserver) {
+        if (request.getId() == 0) {
+            throw new IllegalArgumentException("Идентификатор не должен быть 0");
+        }
         LOGGER.info("Received request of student courses {}", request);
         CourseProto.Course course1 = CourseProto.Course.newBuilder()
                 .setId(1L)
